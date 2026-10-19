@@ -1,7 +1,3 @@
-function notImplemented() {
-  throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
-}
-
 function addToCart(cart, product, quantity) {
   if (quantity <= 0) {
     throw new RangeError('Invalid quantity');
@@ -38,16 +34,16 @@ function changeQuantity(cart, productId, quantity) {
   );
 }
 
-function removeFromCart(cart, productId) { 
+function removeFromCart(cart, productId) {
   return cart.filter(item => item.id !== productId);
- }
+}
 
-function calculateCartSubtotal(cart) { 
+function calculateCartSubtotal(cart) {
   return cart.reduce((acc, item) => {
     return acc + (item.price * item.quantity);
   }, 0);
 }
-function calculateOrderTotal(cart, promoCode = '') { 
+function calculateOrderTotal(cart, promoCode = '') {
   const subtotal = calculateCartSubtotal(cart);
   let discount = 0;
   if (promoCode === 'SAVE10' && subtotal >= 20000) {
